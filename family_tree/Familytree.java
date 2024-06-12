@@ -1,4 +1,4 @@
-/* package familytree2.OOP.family_tree;
+package familytree2.OOP.family_tree;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -48,4 +48,3 @@ public class Familytree<T extends FamilyMember<T>> implements Serializable, Iter
         return members.iterator();
     }
 }
-*/

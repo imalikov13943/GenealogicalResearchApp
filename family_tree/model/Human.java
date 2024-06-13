@@ -1,11 +1,10 @@
-package OOP.family_tree;
+package OOP.family_tree.model;
 
-import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Human implements Serializable, Comparable<Human> {
+public class Human implements FamilyMember<Human> {
     private static final long serialVersionUID = 1L;
 
     private String name;
@@ -23,6 +22,7 @@ public class Human implements Serializable, Comparable<Human> {
         this.children = new ArrayList<>();
     }
 
+    @Override
     public String getName() {
         return name;
     }
@@ -43,6 +43,7 @@ public class Human implements Serializable, Comparable<Human> {
         this.father = father;
     }
 
+    @Override
     public List<Human> getChildren() {
         return children;
     }
@@ -51,6 +52,7 @@ public class Human implements Serializable, Comparable<Human> {
         this.children.add(child);
     }
 
+    @Override
     public LocalDate getBirthDate() {
         return birthDate;
     }
@@ -65,10 +67,5 @@ public class Human implements Serializable, Comparable<Human> {
 
     public Gender getGender() {
         return gender;
-    }
-
-    @Override
-    public int compareTo(Human other) {
-        return this.name.compareTo(other.name);
     }
 }

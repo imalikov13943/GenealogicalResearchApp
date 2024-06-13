@@ -1,12 +1,11 @@
-package familytree2.OOP.utils;
+package OOP.utils;
 
+import OOP.family_tree.Human;
 import java.util.Comparator;
 
-import familytree2.OOP.family_tree.FamilyMember;
-
-public class Sortbybirthdate<T extends FamilyMember> implements Comparator<T> {
+public class Sortbybirthdate implements Comparator<Human> {
     @Override
-    public int compare(T a, T b) {
+    public int compare(Human a, Human b) {
         return a.getBirthDate().compareTo(b.getBirthDate());
     }
 }

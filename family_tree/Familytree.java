@@ -1,33 +1,32 @@
-package familytree2.OOP.family_tree;
+package OOP.family_tree;
 
+import OOP.utils.Sortbyname;
+import OOP.utils.Sortbybirthdate;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
-import familytree2.OOP.utils.Sortbybirthdate;
-import familytree2.OOP.utils.Sortbyname;
-
-public class Familytree<T extends FamilyMember<T>> implements Serializable, Iterable<T> {
+public class Familytree implements Serializable, Iterable<Human> {
     private static final long serialVersionUID = 1L;
 
-    private List<T> members;
+    private List<Human> members;
 
     public Familytree() {
         this.members = new ArrayList<>();
     }
 
-    public void addMember(T member) {
-        this.members.add(member);
+    public void addMember(Human human) {
+        this.members.add(human);
     }
 
-    public List<T> getChildrenOf(T parent) {
+    public List<Human> getChildrenOf(Human parent) {
         return parent.getChildren();
     }
 
-    public T findMemberByName(String name) {
-        for (T member : members) {
+    public Human findMemberByName(String name) {
+        for (Human member : members) {
             if (member.getName().equalsIgnoreCase(name)) {
                 return member;
             }
@@ -36,15 +35,15 @@ public class Familytree<T extends FamilyMember<T>> implements Serializable, Iter
     }
 
     public void sortByName() {
-        Collections.sort(members, new Sortbyname<>());
+        Collections.sort(members, new Sortbyname());
     }
 
     public void sortByBirthDate() {
-        Collections.sort(members, new Sortbybirthdate<>());
+        Collections.sort(members, new Sortbybirthdate());
     }
 
     @Override
-    public Iterator<T> iterator() {
+    public Iterator<Human> iterator() {
         return members.iterator();
     }
 }

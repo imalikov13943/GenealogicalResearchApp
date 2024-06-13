@@ -1,4 +1,4 @@
-package familytree2.OOP.family_tree;
+package OOP.family_tree;
 
 import java.time.LocalDate;
 
@@ -19,7 +19,7 @@ public class Main {
         child2.setFather(parent1);
         child2.setMother(parent2);
 
-        Familytree<Human> familyTree = new Familytree<>();
+        Familytree familyTree = new Familytree();
         familyTree.addMember(parent1);
         familyTree.addMember(parent2);
         familyTree.addMember(child1);
@@ -41,17 +41,8 @@ public class Main {
         for (Human member : familyTree) {
             System.out.println(member.getName() + " - " + member.getBirthDate());
         }
-
-        FileHandler<Human> fileHandler = new FileHandler<>(familyTree);
-        fileHandler.serialize("family_tree.ser");
-
-        FileHandler<Human> newFileHandler = new FileHandler<>(null);
-        newFileHandler.deserialize("family_tree.ser");
-        Familytree<Human> deserializedTree = newFileHandler.getFamilyTree();
-
-        System.out.println("\nDeserialized Family Tree Members:");
-        for (Human member : deserializedTree) {
-            System.out.println(member.getName());
-        }
     }
 }
+
+
+

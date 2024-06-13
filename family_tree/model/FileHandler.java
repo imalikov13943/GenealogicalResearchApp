@@ -1,15 +1,14 @@
-package OOP.family_tree;
+package OOP.family_tree.model;
 
 import java.io.*;
 
-public class FileHandler implements Serializable {
-    private Familytree familyTree;
+public class FileHandler<T extends FamilyMember<T>> implements Serializable {
+    private FamilyTree<T> familyTree;
 
-    public FileHandler(Familytree familyTree) {
+    public FileHandler(FamilyTree<T> familyTree) {
         this.familyTree = familyTree;
     }
 
-    @Override
     public void serialize(String filename) {
         try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(filename))) {
             oos.writeObject(familyTree);
@@ -18,16 +17,15 @@ public class FileHandler implements Serializable {
         }
     }
 
-    @Override
     public void deserialize(String filename) {
         try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(filename))) {
-            familyTree = (Familytree) ois.readObject();
+            familyTree = (FamilyTree<T>) ois.readObject();
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }
     }
 
-    public Familytree getFamilyTree() {
+    public FamilyTree<T> getFamilyTree() {
         return familyTree;
     }
 }
